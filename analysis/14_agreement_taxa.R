@@ -99,7 +99,10 @@ build_fig <- function(dd, pop, title, note) {
 
   plotdat <- dd %>% filter(taxon %in% sel$taxon) %>%
     count(taxon, outcome, name="k") %>%
-    group_by(taxon) %>% mutate(pct=100*k/sum(k)) %>% ungroup()
+    group_by(taxon) %>% mutate(pct=100*k/sum(k)) %>% ungroup() %>%
+    # zero height rows for the categories a genus lacks, so that every category (including one that
+    # occurs in none of the genera shown, as Disagree, both wrong among the orphans) gets a legend swatch
+    tidyr::complete(taxon, outcome=CATS, fill=list(k=0L, pct=0))
   plotdat$outcome <- factor(plotdat$outcome, levels=rev(CATS))       # Both correct at left
   ord <- sel %>% arrange(disagreement_pct) %>% pull(taxon)           # highest disagreement at top
   plotdat$taxon <- factor(plotdat$taxon, levels=ord)

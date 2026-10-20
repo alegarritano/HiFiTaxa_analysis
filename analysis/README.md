@@ -73,10 +73,11 @@ outputs go to `HIFITAXA_OUT/tables/` and `HIFITAXA_OUT/figures/`; the versions b
 | `11_holdout_decomposition.R` | reads `holdout_accuracy.csv` written by 01 | `fig_holdout_decomposition` | Supplementary Fig. S4 |
 | `12_runtimes.R` | `classifier_runtimes.csv` | `fig_classifier_runtimes` | not in the manuscript (parses `pipeline_trace.txt` of each run) |
 | `13_agreement_sankey.R` | | `fig_agreement_sankey` | working figure |
-| `14_agreement_taxa.R` | `agreement_genus_16s_in_reference.csv`, `agreement_genus_16s_orphan.csv` | `fig_agreement_taxa_16s_in_reference`, `fig_agreement_taxa_16s_orphan` | Supplementary Tables S8 and S9; Supplementary Figs. S5 and S6 |
+| `14_agreement_taxa.R` | `agreement_genus_16s_in_reference.csv`, `agreement_genus_16s_orphan.csv` | `fig_agreement_taxa_16s_in_reference`, `fig_agreement_taxa_16s_orphan` (the docx embeds 300 dpi renders of the PDFs) | Supplementary Tables S8 and S9; Supplementary Figs. S5 and S6 |
 | `15_holdout_16s_genus_weighted.R` | `holdout_16s_genus_weighted.csv`, `holdout_16s_genus_weighted_ecoli.csv` | | not in the manuscript (a table of an earlier draft) |
 | `16_holdout_identity_bins.R` | `holdout_accuracy_by_identity.csv` | | Supplementary Table S12 |
 | `17_mock_per_library.R` | `atcc_composition_genus_per_library.csv` (needs `atcc_composition_genus.csv` from 04) | | Supplementary Table S13 |
+| `18_figure1_pipeline.R` | | `fig1_pipeline` (schematic of the pipeline, no data input; drawn at 180 mm) | Figure 1 |
 
 Supplementary Table S10 (read tracking) is compiled from the pipeline's own read
 tracking tables (`stats.tsv`, `primer_removal_stats.tsv`) and not from these scripts.

@@ -13,7 +13,7 @@ carry their history from there.
 | folder | contents |
 |---|---|
 | `benchmark/` | the Gadi job scripts that ran the four benchmark runs (`pbs/`), the holdout splitters, the reference depletion and primer scan tools and the mock exclusion lists; see [benchmark/README.md](benchmark/README.md) |
-| `analysis/` | the R scripts `00_common.R` to `17_mock_per_library.R` that score the runs and draw the figures, and the Gadi identity jobs; see [analysis/README.md](analysis/README.md) |
+| `analysis/` | the R scripts `00_common.R` to `18_figure1_pipeline.R` that score the runs and draw the figures (including the Figure 1 schematic), and the Gadi identity jobs; see [analysis/README.md](analysis/README.md) |
 | `data/identity/` | identity of every holdout test sequence to its closest training sequence (output of `analysis/identity_resume.pbs`, 13 October 2026) |
 | `results/tables/` | the CSV tables the scripts produce from the four runs, the source of Supplementary Tables S1 to S13 |
 | `results/figures/` | the figures the scripts produce, among them Figure 2 (`fig2_main`) and the supplementary figures |
