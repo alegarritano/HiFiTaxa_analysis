@@ -110,11 +110,11 @@ p_backoff <- function(mk, leg) {
   d<-bo%>%filter(marker==mk)%>%pivot_longer(c(Correct,Incorrect,Unassigned),names_to="cat",values_to="pct")
   d$cat<-factor(d$cat,levels=c("Unassigned","Incorrect","Correct"))
   d$classifier<-factor(d$classifier,levels=c("BLCA","BLCA@80","NB"))
-  d$level<-factor(d$level,levels=c("Orphan species -> genus","Orphan genus -> family"),
+  d$level<-factor(d$level,levels=c("Species absent, scored at genus","Genus absent, scored at family"),
                   labels=c("Species\nto genus","Genus\nto family"))
   ggplot(d,aes(classifier,pct,fill=cat))+geom_col(width=0.8)+facet_wrap(~level)+
     scale_fill_manual(values=CAT_COL,name=NULL,breaks=c("Correct","Incorrect","Unassigned"))+
-    scale_y_continuous(expand=expansion(mult=c(0,0.02)))+labs(x=NULL,y="% of orphans")+
+    scale_y_continuous(expand=expansion(mult=c(0,0.02)))+labs(x=NULL,y="% of test sequences")+
     theme_ms(BASE)+theme(legend.position=if(leg)"top" else "none",legend.text=element_text(size=LEGSIZE),
                          legend.key.size=unit(3,"mm"),strip.text=element_text(size=6))+xt90
 }

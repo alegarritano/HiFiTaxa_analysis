@@ -90,11 +90,11 @@ score_marker <- function(marker) {
   backoff <- bind_rows(
     bind_rows(lapply(c("BLCA","BLCA@80","NB"), function(cl){
       idx <- sp_orphan & g_present; pv<-switch(cl,"BLCA"=B$Genus,"BLCA@80"=Bmask$Genus,"NB"=N$Genus)[idx]; tv<-T$Genus[idx]; n<-length(tv)
-      tibble(marker=marker,classifier=cl,level="Orphan species -> genus",n=n,
+      tibble(marker=marker,classifier=cl,level="Species absent, scored at genus",n=n,
              Correct=100*sum(!is.na(pv)&pv==tv)/n,Incorrect=100*sum(!is.na(pv)&pv!=tv)/n,Unassigned=100*sum(is.na(pv))/n)})),
     bind_rows(lapply(c("BLCA","BLCA@80","NB"), function(cl){
       idx <- g_orphan & f_present; pv<-switch(cl,"BLCA"=B$Family,"BLCA@80"=Bmask$Family,"NB"=N$Family)[idx]; tv<-T$Family[idx]; n<-length(tv)
-      tibble(marker=marker,classifier=cl,level="Orphan genus -> family",n=n,
+      tibble(marker=marker,classifier=cl,level="Genus absent, scored at family",n=n,
              Correct=100*sum(!is.na(pv)&pv==tv)/n,Incorrect=100*sum(!is.na(pv)&pv!=tv)/n,Unassigned=100*sum(is.na(pv))/n)})))
   # REVISED 2026-10: decision 4. Old and new denominators of every affected calculation.
   f_present <- !is.na(T$Family) & (T$Family %in% train$Family)
@@ -138,20 +138,20 @@ p_acc<-ggplot(acc,aes(Rank,accuracy,colour=classifier,group=classifier))+
   geom_line(linewidth=0.9)+geom_point(size=2.2)+facet_wrap(~marker_lab)+
   scale_colour_manual(values=pal,name="Classifier")+scale_y_continuous(limits=c(0,100),breaks=seq(0,100,20))+
   labs(x=NULL,y="Overall accuracy (%)",title="Per-rank accuracy on the leave-10%-out reference holdout",
-       subtitle="Rescuable subset (true taxon at that rank present in the 90% training fraction)")+
+       subtitle="Test sequences whose true taxon at that rank is present in the 90% training fraction")+
   theme_bw(base_size=12)+theme(axis.text.x=element_text(angle=35,hjust=1),legend.position="top",panel.grid.minor=element_blank())
 bl<-backoff%>%pivot_longer(c(Correct,Incorrect,Unassigned),names_to="outcome",values_to="pct")
 bl$outcome<-factor(bl$outcome,levels=c("Correct","Incorrect","Unassigned")); bl$classifier<-factor(bl$classifier,levels=c("BLCA","BLCA@80","NB"))
 p_bo<-ggplot(bl,aes(classifier,pct,fill=outcome))+geom_col(width=0.7)+facet_grid(level~marker_lab)+
   scale_fill_manual(values=c("Correct"="#4daf4a","Incorrect"="#e41a1c","Unassigned"="#999999"),name=NULL)+
   scale_y_continuous(limits=c(0,100),breaks=seq(0,100,25))+
-  labs(x=NULL,y="% of orphan queries",title="Novelty backoff: nearest-rank call for taxa absent from the reference")+
+  labs(x=NULL,y="% of test sequences",title="Taxa absent from the reference: the call one rank up")+
   theme_bw(base_size=12)+theme(legend.position="top",panel.grid.minor=element_blank(),strip.text.y=element_text(size=8))
 fig<-p_acc/p_bo+patchwork::plot_annotation(tag_levels="a")+patchwork::plot_layout(heights=c(1,1.2))
 ggsave(file.path(OUT,"figures","fig_holdout_accuracy.png"),fig,width=10,height=10,dpi=200)
 ggsave(file.path(OUT,"figures","fig_holdout_accuracy.pdf"),fig,width=10,height=10)
 
-cat("\n== Holdout accuracy (%) — rescuable subset ==\n")
+cat("\n== Holdout accuracy (%), test sequences whose taxon is present in the training fraction ==\n")
 acc%>%select(marker,Rank,classifier,accuracy)%>%pivot_wider(names_from=classifier,values_from=accuracy)%>%
   mutate(across(where(is.numeric),~round(.,1)))%>%as.data.frame()%>%print(row.names=FALSE)
 cat("\n== Orphan backoff (% correct genus/family) ==\n")

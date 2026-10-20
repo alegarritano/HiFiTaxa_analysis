@@ -19,7 +19,7 @@
     2420
      192
 
-== Holdout accuracy (%) — rescuable subset ==
+== Holdout accuracy (%), test sequences whose taxon is present in the training fraction ==
  marker    Rank BLCA BLCA@80    NB
     16s  Domain 99.4    99.4 100.0
     16s  Phylum 98.4    96.0  99.0
@@ -37,10 +37,10 @@
     its Species 54.7    49.1  52.2
 
 == Orphan backoff (% correct genus/family) ==
- marker                   level BLCA BLCA@80   NB
-    16s Orphan species -> genus 89.1    86.5 88.6
-    16s  Orphan genus -> family 67.7    64.7 78.2
-    its Orphan species -> genus 79.9    76.7 76.1
-    its  Orphan genus -> family 62.0    58.3 55.7
+ marker                           level BLCA BLCA@80   NB
+    16s Species absent, scored at genus 89.1    86.5 88.6
+    16s  Genus absent, scored at family 67.7    64.7 78.2
+    its Species absent, scored at genus 79.9    76.7 76.1
+    its  Genus absent, scored at family 62.0    58.3 55.7
 
 Wrote figures/fig_holdout_accuracy.{png,pdf} + tables/holdout_*.csv

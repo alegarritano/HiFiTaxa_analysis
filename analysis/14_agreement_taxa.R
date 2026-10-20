@@ -159,7 +159,7 @@ dir.create(file.path(OUT,"tables"), showWarnings=FALSE, recursive=TRUE)
 d_ref <- d %>% filter(population=="in_reference")
 write_csv(genus_stats(d_ref), file.path(OUT,"tables","agreement_genus_16s_in_reference.csv"))
 build_fig(d_ref, "in_reference",
-          "16S, species in reference: the genera BLCA and NB disagree on most",
+          "16S rRNA gene, species present in the reference: the genera on which BLCA and NB disagree most",
           sprintf("Test sequences whose true species IS in the 90%% reference (n = %s), highest disagreement at top.",
                   format(nrow(d_ref), big.mark=",")))
 
@@ -168,7 +168,7 @@ d_orp     <- d %>% filter(population=="orphan")                    # all 5,043 -
 d_orp_fig <- d_orp %>% filter(genus_in_ref)                        # 4,130 -> figure (genus scoreable)
 write_csv(genus_stats(d_orp), file.path(OUT,"tables","agreement_genus_16s_orphan.csv"))
 build_fig(d_orp_fig, "orphan",
-          "16S orphans (novel species): the genera BLCA and NB disagree on most",
+          "16S rRNA gene, species absent from the reference: the genera on which BLCA and NB disagree most",
           sprintf("Test sequences whose true species is NOT in the reference but whose GENUS is (n = %s), highest disagreement at top.",
                   format(nrow(d_orp_fig), big.mark=",")))
 

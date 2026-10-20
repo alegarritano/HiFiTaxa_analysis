@@ -44,7 +44,7 @@ panel <- function(mk, title, leg=TRUE) {
     scale_fill_manual(values=CAT_COL, name=NULL) +
     scale_y_continuous(limits=c(0,116), breaks=seq(0,100,25),
                        expand=expansion(mult=c(0,0.02))) +
-    labs(x=NULL, y="% of rescuable test sequences", title=title) +
+    labs(x=NULL, y="% of test sequences", title=title) +
     theme_ms(12) +
     theme(legend.position=if(leg) "top" else "none", legend.text=element_text(size=10),
           panel.grid=element_blank(),
@@ -56,7 +56,7 @@ fig <- panel("16s","a   16S holdout (GTDB r232)", TRUE) /
 ggsave(file.path(OUT,"figures","fig_holdout_decomposition.png"), fig, width=10, height=9, dpi=200)
 ggsave(file.path(OUT,"figures","fig_holdout_decomposition.pdf"), fig, width=10, height=9)
 
-cat("\n== Holdout call decomposition (% of rescuable) ==\n")
+cat("\n== Holdout call decomposition (% of test sequences whose taxon is present) ==\n")
 acc %>% transmute(marker,Rank,classifier,
                   Correct=round(accuracy,1),Incorrect=round(pct_incorrect,1),
                   Unassigned=round(pct_unassigned,1)) %>%
