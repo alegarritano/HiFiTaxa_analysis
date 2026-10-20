@@ -5,7 +5,7 @@ and draw its figures: the 16S rRNA gene mock (ATCC MSA-1003, eight Kinnex Revio
 libraries), the fungal ITS mock (103 species; Tedersoo et al. 2026, Mol Ecol Resour 26,
 e70189), and the GTDB r232 and UNITE leave 10% out holdouts. `identity.pbs` and
 `identity_resume.pbs` are the Gadi PBS jobs that measured the identity of every holdout
-test sequence to its closest training sequence (Supplementary Table S12).
+test sequence to its closest training sequence (Supplementary Table S9).
 
 ## Requirements
 
@@ -60,26 +60,28 @@ outputs go to `HIFITAXA_OUT/tables/` and `HIFITAXA_OUT/figures/`; the versions b
 
 | script | tables | figures | manuscript |
 |---|---|---|---|
-| `01_holdout_accuracy.R` | `holdout_accuracy.csv`, `holdout_orphan_backoff.csv`, `holdout_blca80_coverage_precision.csv`, `holdout_its_placeholder_denominators.csv` | `fig_holdout_accuracy` | Supplementary Tables S4 and S6; Table S5 is derived from `holdout_accuracy.csv` (coverage = 100 minus pct_unassigned; precision = correct / (correct + incorrect)) |
+| `01_holdout_accuracy.R` | `holdout_accuracy.csv`, `holdout_orphan_backoff.csv`, `holdout_blca80_coverage_precision.csv`, `holdout_its_placeholder_denominators.csv` | `fig_holdout_accuracy` | Supplementary Tables S6 and S8; Table S7 is derived from `holdout_accuracy.csv` (coverage = 100 minus pct_unassigned; precision = correct / (correct + incorrect)) |
 | `02_mock_detection.R` | `mock_detection.csv` | `fig_mock_detection` | Supplementary Table S1 |
 | `03_clade_exclusion.R` | `clade_exclusion.csv` | `fig_clade_exclusion` | not in the manuscript (needs the clade exclusion runs of `benchmark/pbs/clade_exclusion.pbs`) |
-| `04_mock_composition.R` | `atcc_composition_genus.csv` | `fig_atcc_deviation_heatmap` | Supplementary Table S3 (its composition error row is the sum of the absolute deviations in that file) and Supplementary Fig. S2 |
-| `05_mock_readweighted.R` | `mock_readweighted_accuracy.csv` | | Supplementary Table S7 |
-| `06_mock_taxaplots.R` | | `fig_mock_taxaplot_16s`, `fig_mock_taxaplot_its` | Supplementary Fig. S1 (16S) |
-| `07_mock_retrieval.R` | `mock_retrieval.csv`; with `FP_THRESH=0` and `FP_THRESH=0.0001`, `mock_retrieval_threshold_any_read.csv` and `mock_retrieval_threshold_0.01pct.csv` | `fig_mock_retrieval_16s`, `fig_mock_retrieval_its` | Supplementary Tables S2 and S11 |
+| `04_mock_composition.R` | `atcc_composition_genus.csv` | `fig_atcc_deviation_heatmap` | Supplementary Table S3 (its composition error row is the sum of the absolute deviations in that file) and Supplementary Fig. S5 |
+| `05_mock_readweighted.R` | `mock_readweighted_accuracy.csv` | | Supplementary Table S13 |
+| `06_mock_taxaplots.R` | | `fig_mock_taxaplot_16s`, `fig_mock_taxaplot_its` | Supplementary Fig. S4 (16S) |
+| `07_mock_retrieval.R` | `mock_retrieval.csv`; with `FP_THRESH=0` and `FP_THRESH=0.0001`, `mock_retrieval_threshold_any_read.csv` and `mock_retrieval_threshold_0.01pct.csv` | `fig_mock_retrieval_16s`, `fig_mock_retrieval_its` | Supplementary Tables S2 and S5 |
 | `08_holdout_retrieval.R` | reads `holdout_accuracy.csv` and `holdout_orphan_backoff.csv` written by 01 | `fig_holdout_retrieval_16s`, `fig_holdout_retrieval_its` | working figures |
 | `09_figure2.R` | `mock_detection_unassigned.csv` | `fig2_main` (drawn at 180 mm, 300 dpi; the PDF needs `pdftocairo` or Ghostscript to embed fonts) | Figure 2 |
-| `10_holdout_taxaplot.R` | | `fig_holdout_taxaplot_16s` | Supplementary Fig. S3 |
-| `11_holdout_decomposition.R` | reads `holdout_accuracy.csv` written by 01 | `fig_holdout_decomposition` | Supplementary Fig. S4 |
+| `10_holdout_taxaplot.R` | | `fig_holdout_taxaplot_16s` | Supplementary Fig. S6 |
+| `11_holdout_decomposition.R` | reads `holdout_accuracy.csv` written by 01 | `fig_holdout_decomposition` | Supplementary Fig. S1 |
 | `12_runtimes.R` | `classifier_runtimes.csv` | `fig_classifier_runtimes` | not in the manuscript (parses `pipeline_trace.txt` of each run) |
 | `13_agreement_sankey.R` | | `fig_agreement_sankey` | working figure |
-| `14_agreement_taxa.R` | `agreement_genus_16s_in_reference.csv`, `agreement_genus_16s_orphan.csv` | `fig_agreement_taxa_16s_in_reference`, `fig_agreement_taxa_16s_orphan` (the docx embeds 300 dpi renders of the PDFs) | Supplementary Tables S8 and S9; Supplementary Figs. S5 and S6 |
+| `14_agreement_taxa.R` | `agreement_genus_16s_in_reference.csv`, `agreement_genus_16s_orphan.csv` | `fig_agreement_taxa_16s_in_reference`, `fig_agreement_taxa_16s_orphan` (the docx embeds 300 dpi renders of the PDFs) | Supplementary Tables S10 and S11; Supplementary Figs. S2 and S3 |
 | `15_holdout_16s_genus_weighted.R` | `holdout_16s_genus_weighted.csv`, `holdout_16s_genus_weighted_ecoli.csv` | | not in the manuscript (a table of an earlier draft) |
-| `16_holdout_identity_bins.R` | `holdout_accuracy_by_identity.csv` | | Supplementary Table S12 |
-| `17_mock_per_library.R` | `atcc_composition_genus_per_library.csv` (needs `atcc_composition_genus.csv` from 04) | | Supplementary Table S13 |
+| `16_holdout_identity_bins.R` | `holdout_accuracy_by_identity.csv` | | Supplementary Table S9 |
+| `17_mock_per_library.R` | `atcc_composition_genus_per_library.csv` (needs `atcc_composition_genus.csv` from 04) | | Supplementary Table S12 |
 | `18_figure1_pipeline.R` | | `fig1_pipeline` (schematic of the pipeline, no data input; drawn at 180 mm) | Figure 1 |
 
-Supplementary Table S10 (read tracking) is compiled from the pipeline's own read
+Supplementary tables and figures were renumbered by first mention on 20 October 2026 (old S10, S11, S4, S5, S6, S12, S8, S9, S13, S7 became S4 to S13 in that order; old Supplementary Figs. S4, S5, S6, S1, S2, S3 became S1 to S6); the numbers above are the new ones. Figures are in `manuscript/figures/` under their new numbers.
+
+Supplementary Table S4 (read tracking) is compiled from the pipeline's own read
 tracking tables (`stats.tsv`, `primer_removal_stats.tsv`) and not from these scripts.
 The scoring rules (name folding, the rule for crediting species calls on the 16S mock,
 placeholder exclusion on the ITS holdout, the BLCA@80 mask) are in `00_common.R` and

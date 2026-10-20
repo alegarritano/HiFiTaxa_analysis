@@ -1,6 +1,6 @@
 #!/usr/bin/env Rscript
 # =====================================================================
-# Supplementary Figure S4: holdout call decomposition, 16S and fungal ITS.
+# Supplementary Figure S1: holdout call decomposition, 16S and fungal ITS.
 # Companion to main Fig. 2b/2e (which show accuracy alone). For every rank and
 # classifier the calls on the rescuable subset are split into Correct (= the
 # per rank accuracy), Incorrect (a wrong taxon) and Unassigned (no call), and

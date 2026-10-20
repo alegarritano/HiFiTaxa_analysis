@@ -1,7 +1,7 @@
 #!/usr/bin/env Rscript
 # =====================================================================
 # ATCC MSA-1003 mock: genus level composition PER LIBRARY for every classifier
-# (Supplementary Table S13). Same folding and the same taxon rows as Table S3
+# (Supplementary Table S12). Same folding and the same taxon rows as Table S3
 # (04_mock_composition.R): the 18 mock genera, Unassigned (ASV classifiers only),
 # the foreign genera that any classifier reports above FP_THRESH of the pooled
 # reads, and one row for all other foreign genera. For BLCA, BLCA@80 and NB the
