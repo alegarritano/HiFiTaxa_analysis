@@ -4,7 +4,9 @@
 #   mock detection (genus+species) | holdout per-rank accuracy | orphan backoff
 # Emu/EMITS appear only on the mock (a holdout has no reads).
 # Drawn at its final width (180 mm, double column) so that the font sizes in the
-# file are the printed sizes: base 7 pt, bar numbers 5.5 pt, in-bar labels 5 pt.
+# file are the printed sizes: base 7 pt, bar numbers 5.5 pt (holdout panels only).
+# The mock panels (a, d) carry no numbers on the bars and no unassigned labels;
+# the counts and the unassigned read shares are in mock_detection_unassigned.csv.
 # The PDF is written with the pdf device and the fonts are embedded with
 # embedFonts() when Ghostscript is available (grDevices' cairo cannot load on
 # a Mac without XQuartz).
@@ -52,7 +54,6 @@ bo  <- read_csv(file.path(OUT,"tables","holdout_orphan_backoff.csv"),show_col_ty
 ## ---------- panel builders ----------
 BASE    <- 7           # base font size (pt) at the final 180 mm width
 NUMSIZE <- 5.5/.pt     # bar-top number size (5.5 pt)
-INBAR   <- 5/.pt       # in-bar unassigned label (5 pt)
 LEGSIZE <- 6.5
 TAGSIZE <- 9
 xt90 <- theme(axis.text.x=element_text(angle=90, hjust=1, vjust=0.5))
@@ -66,22 +67,12 @@ p_detect <- function(dd, rl, leg, ceiling=NULL) {
        pivot_longer(c(Detected,Missed,`False pos.`),names_to="cat",values_to="n")
   d$cat<-factor(d$cat,levels=c("Detected","Missed","False pos."))
   d$cl<-factor(d$cl,levels=c("Expected","BLCA","BLCA@80",rl,"NB")); d$rank<-factor(d$rank,levels=c("Genus","Species"))
-  fmt_u<-function(x) ifelse(is.na(x), "n/a", paste0(ifelse(x<0.05 & x>0, "<0.1", formatC(x,format="f",digits=1)),"%"))
-  # unassigned reads (%) written inside the base of each Detected bar ("n/a" for the read level profilers,
-  # whose tables hold only assigned reads); the legend explains the label. Expected gets an empty label so
-  # the dodge aligns
-  ul <- bind_rows(dd %>% transmute(rank, cl, lab=fmt_u(unassigned)),
-                  nexp %>% transmute(rank, cl="Expected", lab=""))
-  ul$cat<-factor("Detected",levels=levels(d$cat)); ul$n<-0
-  ul$cl<-factor(ul$cl,levels=levels(d$cl)); ul$rank<-factor(ul$rank,levels=c("Genus","Species"))
+  # bars only: no counts on the bars and no unassigned read labels (both are in
+  # tables/mock_detection_unassigned.csv)
   g <- ggplot(d,aes(cat,n,fill=cl))+
     geom_col(position=position_dodge(0.8),width=0.8)+
-    geom_text(data=ul,aes(x=cat,y=n,label=lab,group=cl),inherit.aes=FALSE,position=position_dodge(0.8),
-              angle=90,hjust=-0.05,vjust=0.5,size=INBAR,colour="white")+
-    geom_text(aes(label=ifelse(n>0 | cat=="Detected",n,NA)),position=position_dodge(0.8),
-              angle=90,hjust=-0.2,vjust=0.5,size=NUMSIZE)+
     facet_wrap(~rank,scales="free_y")+scale_fill_manual(values=CLF_COL,name=NULL)+
-    scale_y_continuous(expand=expansion(mult=c(0,0.24)))+labs(x=NULL,y="# taxa")+
+    scale_y_continuous(expand=expansion(mult=c(0,0.08)))+labs(x=NULL,y="# taxa")+
     theme_ms(BASE)+theme(legend.position=if(leg)"top" else "none",
                        legend.text=element_text(size=LEGSIZE),legend.key.size=unit(3,"mm"))+xt90
   if (!is.null(ceiling)) {
