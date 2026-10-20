@@ -1,0 +1,8 @@
+[common] ATCC truth: 20 species / 18 genera | Fungal truth: 103 species / 26 genera
+Warning messages:
+1: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+2: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+Warning messages:
+1: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+2: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+Wrote fig_mock_taxaplot_16s.{png,pdf} and fig_mock_taxaplot_its.{png,pdf}

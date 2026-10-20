@@ -35,28 +35,28 @@ mock directory must hold `dada2/feature_table.tsv`, `taxonomy_blca/`, `taxonomy_
 `taxonomy_emu/` (16S) or `taxonomy_emits/per_sample/` (ITS); each holdout directory
 `test_10.taxonomy`, `reference_90.taxonomy`, `split_stats.json` and
 `results/taxonomy_{blca,nb}/`. `16_holdout_identity_bins.R` also needs
-`identity_16s.tsv` and `identity_its.tsv`, written by the identity job.
+`identity_16s.tsv` and `identity_its.tsv`, written by the identity job (the manuscript's files are in `data/identity/`).
 
 ## Environment variables
 
 | variable | meaning | default |
 |---|---|---|
 | `HIFITAXA_DATA` | directory holding the four run directories above | required |
-| `HIFITAXA_OUT` | where `tables/` and `figures/` are written | `benchmark/analysis/regenerated/` (ignored by git) |
-| `HIFITAXA_REPO` | a HiFiTaxa checkout, for `benchmark/mock_exclude/fungi_103_species.txt` | found automatically when run from `benchmark/analysis/` of a checkout; otherwise required |
-| `IDENT_DIR` | folder holding `identity_16s.tsv` and `identity_its.tsv` (script 16 only) | this folder |
+| `HIFITAXA_OUT` | where `tables/` and `figures/` are written | `analysis/regenerated/` (ignored by git) |
+| `HIFITAXA_REPO` | a checkout of this repository, for `benchmark/mock_exclude/fungi_103_species.txt` | found automatically when run from `analysis/` of a checkout; otherwise required |
+| `IDENT_DIR` | folder holding `identity_16s.tsv` and `identity_its.tsv` (script 16 only) | this folder; the manuscript's files are in `data/identity/` |
 | `FP_THRESH` | false positive threshold as a fraction of the reads classified at that rank | `0.001` (0.1%) |
 
 Every script locates `00_common.R` next to itself, so it can be run from any directory:
 
 ```
-HIFITAXA_DATA=/path/to/run_dirs HIFITAXA_OUT=/path/to/out Rscript benchmark/analysis/01_holdout_accuracy.R
+HIFITAXA_DATA=/path/to/run_dirs HIFITAXA_OUT=/path/to/out Rscript analysis/01_holdout_accuracy.R
 ```
 
 ## Scripts, outputs and where they appear in the manuscript
 
 Run the table scripts first (01, 02, 04, 05, 07, 14, 16, 17), then the figure scripts. All
-outputs go to `HIFITAXA_OUT/tables/` and `HIFITAXA_OUT/figures/`.
+outputs go to `HIFITAXA_OUT/tables/` and `HIFITAXA_OUT/figures/`; the versions behind the manuscript are in `results/tables/` and `results/figures/`.
 
 | script | tables | figures | manuscript |
 |---|---|---|---|

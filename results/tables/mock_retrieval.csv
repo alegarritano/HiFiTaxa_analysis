@@ -1,0 +1,17 @@
+marker,classifier,rank,Detected,Missed,False pos.,nonred,n_expected
+16s,BLCA,Genus,18,0,0,18,18
+16s,BLCA,Species,20,0,2,22,20
+16s,BLCA@80,Genus,18,0,0,18,18
+16s,BLCA@80,Species,20,0,0,20,20
+16s,Emu,Genus,18,0,4,22,18
+16s,Emu,Species,20,0,8,28,20
+16s,NB,Genus,18,0,0,18,18
+16s,NB,Species,17,3,0,17,20
+its,BLCA,Genus,22,4,1,23,26
+its,BLCA,Species,54,49,25,79,103
+its,BLCA@80,Genus,22,4,1,23,26
+its,BLCA@80,Species,54,49,19,73,103
+its,EMITS,Genus,24,2,0,24,26
+its,EMITS,Species,60,43,21,81,103
+its,NB,Genus,23,3,1,24,26
+its,NB,Species,57,46,18,75,103

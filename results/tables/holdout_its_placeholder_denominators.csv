@@ -1,0 +1,8 @@
+marker,quantity,n_before,n_after
+its,Test sequences scored,10213,10213
+its,Test sequences with a placeholder species label,NA,6248
+its,Test sequences with an Incertae sedis genus label,NA,3101
+its,Species accuracy denominator (species present in training),7489,1346
+its,Genus accuracy denominator (genus present in training),9983,6904
+its,"Species absent, genus present (scored at genus)",2494,2420
+its,"Genus absent, family present (scored at family)",206,192

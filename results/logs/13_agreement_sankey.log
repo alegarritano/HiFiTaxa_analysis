@@ -1,0 +1,29 @@
+[common] ATCC truth: 20 species / 18 genera | Fungal truth: 103 species / 26 genera
+
+== BLCA vs NB agreement by rank (16S, % of species-rescuable) ==
+
+-- Family --
+                  Family     n  pct
+       Agree, both wrong   868  1.0
+       BLCA correct only   189  0.2
+            Both correct 89075 98.2
+ Both wrong / unassigned   183  0.2
+         NB correct only   373  0.4
+
+-- Genus --
+                   Genus     n  pct
+       Agree, both wrong  1169  1.3
+       BLCA correct only  6215  6.9
+            Both correct 79732 87.9
+ Both wrong / unassigned  2581  2.8
+         NB correct only   991  1.1
+
+-- Species --
+                 Species     n  pct
+       Agree, both wrong   778  0.9
+       BLCA correct only 29419 32.4
+            Both correct 43175 47.6
+ Both wrong / unassigned 16881 18.6
+         NB correct only   435  0.5
+
+Wrote figures/fig_agreement_sankey.{png,pdf}

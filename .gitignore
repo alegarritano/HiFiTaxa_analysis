@@ -1,0 +1,7 @@
+# outputs of the scoring scripts
+analysis/regenerated/
+# R and OS artefacts
+Rplots.pdf
+.Rhistory
+.DS_Store
+__pycache__/

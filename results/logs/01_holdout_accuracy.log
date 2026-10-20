@@ -1,0 +1,46 @@
+[common] ATCC truth: 20 species / 18 genera | Fungal truth: 103 species / 26 genera
+16S scored 95731 (sp-orphan 5043, genus-orphan 913) | ITS scored 10213 (sp-orphan 2619, genus-orphan 208)
+
+== ITS holdout denominators before and after excluding placeholder labels ==
+ marker                                                   quantity n_before
+    its                                      Test sequences scored    10213
+    its            Test sequences with a placeholder species label       NA
+    its          Test sequences with an Incertae sedis genus label       NA
+    its Species accuracy denominator (species present in training)     7489
+    its     Genus accuracy denominator (genus present in training)     9983
+    its            Species absent, genus present (scored at genus)     2494
+    its            Genus absent, family present (scored at family)      206
+ n_after
+   10213
+    6248
+    3101
+    1346
+    6904
+    2420
+     192
+
+== Holdout accuracy (%) — rescuable subset ==
+ marker    Rank BLCA BLCA@80    NB
+    16s  Domain 99.4    99.4 100.0
+    16s  Phylum 98.4    96.0  99.0
+    16s   Class 98.3    95.2  98.9
+    16s   Order 98.1    94.7  98.6
+    16s  Family 98.0    94.5  98.4
+    16s   Genus 94.5    89.0  89.0
+    16s Species 80.0    70.4  48.1
+    its  Domain 98.3    98.3 100.0
+    its  Phylum 97.2    97.1  97.3
+    its   Class 94.5    93.9  92.8
+    its   Order 91.5    90.6  89.1
+    its  Family 85.4    83.4  80.4
+    its   Genus 83.4    80.1  79.5
+    its Species 54.7    49.1  52.2
+
+== Orphan backoff (% correct genus/family) ==
+ marker                   level BLCA BLCA@80   NB
+    16s Orphan species -> genus 89.1    86.5 88.6
+    16s  Orphan genus -> family 67.7    64.7 78.2
+    its Orphan species -> genus 79.9    76.7 76.1
+    its  Orphan genus -> family 62.0    58.3 55.7
+
+Wrote figures/fig_holdout_accuracy.{png,pdf} + tables/holdout_*.csv

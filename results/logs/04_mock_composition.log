@@ -1,0 +1,29 @@
+[common] ATCC truth: 20 species / 18 genera | Fungal truth: 103 species / 26 genera
+
+== ATCC genus relative abundance (%) ==
+           taxon Expected  BLCA BLCA@80   Emu    NB
+  Staphylococcus    19.80 23.70   19.49 26.90 23.70
+   Streptococcus    19.80 14.55   14.55 15.57 14.55
+     Cereibacter    18.00 16.25   16.25 18.62 16.25
+     Escherichia    18.00 18.35    2.70  8.68 15.78
+   Porphyromonas    18.00 16.34   16.34 13.74 16.34
+        Bacillus     1.80  5.47    5.47  4.54  5.47
+     Clostridium     1.80  3.09    3.09  3.49  3.09
+     Pseudomonas     1.80  1.32    1.32  1.98  1.32
+   Acinetobacter     0.18  0.21    0.21  0.20  0.21
+   Cutibacterium     0.18  0.10    0.10  0.00  0.10
+    Helicobacter     0.18  0.10    0.10  0.11  0.10
+   Lactobacillus     0.18  0.23    0.23  0.25  0.23
+       Neisseria     0.18  0.21    0.21  0.01  0.21
+ Bifidobacterium     0.02  0.01    0.01  0.01  0.01
+     Deinococcus     0.02  0.02    0.02  0.02  0.02
+    Enterococcus     0.02  0.01    0.00  0.01  0.01
+     Phocaeicola     0.02  0.03    0.03  0.03  0.03
+        Schaalia     0.02  0.00    0.00  0.00  0.00
+      Unassigned     0.00  0.00   19.87  0.00  2.58
+   Mycobacterium     0.00  0.00    0.00  4.97  0.00
+      Salmonella     0.00  0.00    0.00  0.32  0.00
+    Enterobacter     0.00  0.00    0.00  0.18  0.00
+      Klebsiella     0.00  0.00    0.00  0.15  0.00
+
+Wrote figures/fig_atcc_deviation_heatmap.{png,pdf}

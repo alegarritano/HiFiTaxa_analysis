@@ -1,0 +1,24 @@
+[common] ATCC truth: 20 species / 18 genera | Fungal truth: 103 species / 26 genera
+Per sequence counts agree with holdout_accuracy.csv (16s, Genus).
+
+== 16S holdout, genus rank: per sequence and per genus (equal weight) accuracy (%) ==
+                                                genera                weighting n_genera n_sequences  BLCA BLCA@80    NB BLCA_minus_NB_points correct_BLCA correct_BLCA@80 correct_NB BLCA_minus_NB_sequences
+                                            All genera             Per sequence     5478       94818 94.52   89.01 89.00                 5.53        89626           84399      84384                    5242
+                                            All genera Per genus (equal weight)     5478       94818 89.59   87.84 90.17                -0.58        89626           84399      84384                    5242
+ Escherichia group (Escherichia, ECMA0423, G047199095)             Per sequence        3       10267 69.11   44.80 28.00                41.11         7096            4600       2875                    4221
+               All genera except the Escherichia group             Per sequence     5475       84551 97.61   94.38 96.40                 1.21        82530           79799      81509                    1021
+               All genera except the Escherichia group Per genus (equal weight)     5475       84551 89.60   87.87 90.19                -0.59        82530           79799      81509                    1021
+ share_of_per_sequence_difference_pct
+                               100.00
+                               100.00
+                                80.52
+                                19.48
+                                19.48
+
+== Escherichia group genera ==
+       genus    n correct_BLCA correct_BLCA@80 correct_NB acc_BLCA acc_BLCA@80   acc_NB
+    ECMA0423 2656         1535            1268       1086 57.79367    47.74096 40.88855
+ Escherichia 7104         5307            3195       1365 74.70439    44.97466 19.21453
+  G047199095  507          254             137        424 50.09862    27.02170 83.62919
+
+Wrote tables/holdout_16s_genus_weighted.csv and tables/holdout_16s_genus_weighted_ecoli.csv

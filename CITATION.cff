@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use these scripts, please cite the HiFiTaxa manuscript and this repository."
+title: "HiFiTaxa_analysis: benchmark harness, scoring and figure code for the HiFiTaxa manuscript"
+abstract: "Gadi job scripts, holdout splitters, scoring scripts and figure code used to benchmark the HiFiTaxa pipeline (https://github.com/alegarritano/HiFiTaxa) on the ATCC MSA-1003 16S rRNA gene mock, a 103 species fungal ITS mock and GTDB and UNITE leave 10% out holdouts, with the resulting tables and figures."
+authors:
+  - family-names: Garritano
+    given-names: Alessandro N.
+version: 1.0.0
+date-released: 2026-10-20
+license: MIT
+repository-code: "https://github.com/alegarritano/HiFiTaxa_analysis"

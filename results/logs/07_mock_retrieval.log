@@ -1,0 +1,27 @@
+[common] ATCC truth: 20 species / 18 genera | Fungal truth: 103 species / 26 genera
+Warning messages:
+1: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+2: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+3: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+4: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+
+== Mock retrieval ==
+ marker classifier    rank                                        s
+    16s       BLCA   Genus    det 18 / miss 0 / FP 0 (nonred 18/18)
+    16s       BLCA Species    det 20 / miss 0 / FP 2 (nonred 22/20)
+    16s    BLCA@80   Genus    det 18 / miss 0 / FP 0 (nonred 18/18)
+    16s    BLCA@80 Species    det 20 / miss 0 / FP 0 (nonred 20/20)
+    16s        Emu   Genus    det 18 / miss 0 / FP 4 (nonred 22/18)
+    16s        Emu Species    det 20 / miss 0 / FP 8 (nonred 28/20)
+    16s         NB   Genus    det 18 / miss 0 / FP 0 (nonred 18/18)
+    16s         NB Species    det 17 / miss 3 / FP 0 (nonred 17/20)
+    its       BLCA   Genus    det 22 / miss 4 / FP 1 (nonred 23/26)
+    its       BLCA Species det 54 / miss 49 / FP 25 (nonred 79/103)
+    its    BLCA@80   Genus    det 22 / miss 4 / FP 1 (nonred 23/26)
+    its    BLCA@80 Species det 54 / miss 49 / FP 19 (nonred 73/103)
+    its      EMITS   Genus    det 24 / miss 2 / FP 0 (nonred 24/26)
+    its      EMITS Species det 60 / miss 43 / FP 21 (nonred 81/103)
+    its         NB   Genus    det 23 / miss 3 / FP 1 (nonred 24/26)
+    its         NB Species det 57 / miss 46 / FP 18 (nonred 75/103)
+
+Wrote fig_mock_retrieval_{16s,its}.{png,pdf} + tables/mock_retrieval.csv

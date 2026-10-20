@@ -1,0 +1,23 @@
+[common] ATCC truth: 20 species / 18 genera | Fungal truth: 103 species / 26 genera
+Warning messages:
+1: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+2: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+3: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+4: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+
+== Read-weighted mock accuracy (% reads) ==
+                   marker classifier    rank accuracy foreign_pct
+      16S (ATCC MSA-1003)       BLCA   Genus    100.0         0.0
+      16S (ATCC MSA-1003)       BLCA Species     94.2         0.0
+      16S (ATCC MSA-1003)         NB   Genus    100.0         0.0
+      16S (ATCC MSA-1003)         NB Species    100.0         0.0
+      16S (ATCC MSA-1003)        Emu   Genus     94.2         5.8
+      16S (ATCC MSA-1003)        Emu Species     90.8         5.8
+ Fungal ITS (103-sp mock)       BLCA   Genus     95.7         4.3
+ Fungal ITS (103-sp mock)       BLCA Species     68.0         4.3
+ Fungal ITS (103-sp mock)         NB   Genus     97.7         2.3
+ Fungal ITS (103-sp mock)         NB Species     75.0         2.2
+ Fungal ITS (103-sp mock)      EMITS   Genus     95.8         4.2
+ Fungal ITS (103-sp mock)      EMITS Species     69.7         4.2
+
+Wrote tables/mock_readweighted_accuracy.csv

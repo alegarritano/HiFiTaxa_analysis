@@ -1,0 +1,7 @@
+[common] ATCC truth: 20 species / 18 genera | Fungal truth: 103 species / 26 genera
+[in_reference] 90688 seqs | 839 genera n>=5 (534 with zero disagreement) | showing 100 (14.3%-100.0% disagreement) | page 8.27 x 13.25 in
+[orphan] 4130 seqs | 105 genera n>=5 (77 with zero disagreement) | showing 28 (4.0%-60.0% disagreement) | page 8.27 x 4.82 in
+
+Orphan table also carries the 913 sequences whose genus is absent from the reference (genus_in_reference=FALSE).
+Wrote figures/fig_agreement_taxa_16s_{in_reference,orphan}.{png,pdf}
+Wrote tables/agreement_genus_16s_{in_reference,orphan}.csv (every genus, no n floor)

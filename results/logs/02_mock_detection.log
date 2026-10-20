@@ -1,0 +1,23 @@
+[common] ATCC truth: 20 species / 18 genera | Fungal truth: 103 species / 26 genera
+Warning messages:
+1: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+2: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+3: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+4: In eval_tidy(xs[[j]], mask) : NAs introduced by coercion
+
+== Mock detection (recovered/expected, +FP) ==
+                   marker classifier    rank                 s
+      16S (ATCC MSA-1003)       BLCA   Genus   18/18 rec, 0 FP
+      16S (ATCC MSA-1003)       BLCA Species   20/20 rec, 2 FP
+      16S (ATCC MSA-1003)         NB   Genus   18/18 rec, 0 FP
+      16S (ATCC MSA-1003)         NB Species   17/20 rec, 0 FP
+      16S (ATCC MSA-1003)        Emu   Genus   18/18 rec, 4 FP
+      16S (ATCC MSA-1003)        Emu Species   20/20 rec, 8 FP
+ Fungal ITS (103-sp mock)       BLCA   Genus   22/26 rec, 1 FP
+ Fungal ITS (103-sp mock)       BLCA Species 54/103 rec, 25 FP
+ Fungal ITS (103-sp mock)         NB   Genus   23/26 rec, 1 FP
+ Fungal ITS (103-sp mock)         NB Species 57/103 rec, 18 FP
+ Fungal ITS (103-sp mock)      EMITS   Genus   24/26 rec, 0 FP
+ Fungal ITS (103-sp mock)      EMITS Species 60/103 rec, 21 FP
+
+Wrote figures/fig_mock_detection.{png,pdf} + tables/mock_detection.csv

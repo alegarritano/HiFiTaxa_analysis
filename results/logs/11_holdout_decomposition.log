@@ -1,0 +1,18 @@
+[common] ATCC truth: 20 species / 18 genera | Fungal truth: 103 species / 26 genera
+
+== Holdout call decomposition (% of rescuable) ==
+ marker    Rank classifier Correct Incorrect Unassigned
+    16s   Genus       BLCA    94.5       5.2        0.3
+    16s   Genus    BLCA@80    89.0       3.0        8.0
+    16s   Genus         NB    89.0       5.1        5.9
+    16s Species       BLCA    80.0      19.7        0.3
+    16s Species    BLCA@80    70.4       7.1       22.6
+    16s Species         NB    48.1       2.7       49.2
+    its   Genus       BLCA    83.4      15.9        0.7
+    its   Genus    BLCA@80    80.1      11.5        8.4
+    its   Genus         NB    79.5       6.2       14.4
+    its Species       BLCA    54.7      44.9        0.4
+    its Species    BLCA@80    49.1      30.0       20.9
+    its Species         NB    52.2      15.6       32.2
+
+Wrote figures/fig_holdout_decomposition.{png,pdf}

@@ -1,0 +1,27 @@
+[16s] Tue Oct 13 11:51:13 AEDT 2026 makeblastdb
+[16s] Tue Oct 13 11:51:40 AEDT 2026 remaining queries
+[16s] 21058 queries in total, 0 already searched, 21058 remaining in 48 chunks
+[16s] Tue Oct 13 11:51:42 AEDT 2026 blastn, 48 single thread processes
+[16s] Tue Oct 13 16:18:26 AEDT 2026 best hit per query
+[16s] queries: 95731; with a hit: 95605; no hit: 126; bins: {'100': 76712, '99 to <100': 14554, '97 to <99': 2229, '<97': 2110}
+[its] Tue Oct 13 16:18:27 AEDT 2026 step 1: split /g/data/is54/apps/HiFiTaxa/v1.2.3/db_unite/unite_BLCAparsed.fasta and find identical sequences
+[its] test sequences: 10213 of 10213 listed; identical training sequence: 0; to BLAST: 10213
+[its] Tue Oct 13 16:18:31 AEDT 2026 makeblastdb
+[its] Tue Oct 13 16:18:33 AEDT 2026 remaining queries
+[its] 10213 queries in total, 0 already searched, 10213 remaining in 48 chunks
+[its] Tue Oct 13 16:18:33 AEDT 2026 blastn, 48 single thread processes
+[its] Tue Oct 13 16:20:57 AEDT 2026 best hit per query
+[its] queries: 10213; with a hit: 9572; no hit: 641; bins: {'100': 36, '99 to <100': 347, '97 to <99': 3672, '<97': 5517}
+done Tue Oct 13 16:20:57 AEDT 2026: copy identity_16s.tsv and identity_its.tsv back to the Mac
+
+======================================================================================
+                  Resource Usage on 2026-10-13 16:21:00:
+   Job Id:             181106660.gadi-pbs
+   Project:            is54
+   Exit Status:        0
+   Service Units:      431.97
+   NCPUs Requested:    48                  CPU Time Used: 158:37:07       
+   Memory Requested:   190.0GB               Memory Used: 3.47GB          
+   Walltime Requested: 12:00:00            Walltime Used: 04:29:59        
+   JobFS Requested:    100.0GB                JobFS Used: 0B              
+======================================================================================

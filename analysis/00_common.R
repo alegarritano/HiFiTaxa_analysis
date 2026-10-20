@@ -1,5 +1,5 @@
 # =====================================================================
-# HiFiTaxa benchmark: shared helpers, sourced by every script in benchmark/analysis/.
+# HiFiTaxa benchmark: shared helpers, sourced by every script in analysis/.
 # Paths come from environment variables (see Paths below and README.md).
 # =====================================================================
 suppressPackageStartupMessages({
@@ -12,24 +12,25 @@ suppressPackageStartupMessages({
 #   README.md (results_atcc_16s, results_fungi_its, benchmark_holdout_16s_seed42,
 #   benchmark_holdout_its_seed42). They are not part of the repository.
 # HIFITAXA_OUT (default <this folder>/regenerated): where figures/ and tables/ are written.
-# HIFITAXA_REPO: a HiFiTaxa checkout, used only for the fungal mock truth list in
-#   benchmark/mock_exclude/. Found automatically when these scripts run from
-#   benchmark/analysis/ of a checkout; otherwise it must be set.
+# HIFITAXA_REPO: the checkout that holds the fungal mock truth list
+#   benchmark/mock_exclude/fungi_103_species.txt (this repository, HiFiTaxa_analysis).
+#   Found automatically when these scripts run from analysis/ of a checkout (or from
+#   benchmark/analysis/ of the pipeline repository before 20 October 2026); otherwise set it.
 #     HIFITAXA_DATA=/path/to/run_dirs HIFITAXA_OUT=/path/to/out Rscript 01_holdout_accuracy.R
 BR   <- Sys.getenv("HIFITAXA_DATA", unset = "")
 OUT  <- Sys.getenv("HIFITAXA_OUT",  unset = file.path(.SCRIPT_DIR, "regenerated"))
 REPO <- Sys.getenv("HIFITAXA_REPO", unset = "")
-if (REPO == "") {
-  .cand <- normalizePath(file.path(.SCRIPT_DIR, "..", ".."), mustWork = FALSE)
-  if (file.exists(file.path(.cand, "benchmark", "mock_exclude", "fungi_103_species.txt"))) REPO <- .cand
+if (REPO == "") for (.cand in c(normalizePath(file.path(.SCRIPT_DIR, ".."), mustWork = FALSE),
+                                normalizePath(file.path(.SCRIPT_DIR, "..", ".."), mustWork = FALSE))) {
+  if (file.exists(file.path(.cand, "benchmark", "mock_exclude", "fungi_103_species.txt"))) { REPO <- .cand; break }
 }
 if (BR == "" || !dir.exists(BR)) stop(sprintf(
   "Benchmark data not found (HIFITAXA_DATA = '%s').
-Set HIFITAXA_DATA to the directory holding the run directories listed in benchmark/analysis/README.md:
+Set HIFITAXA_DATA to the directory holding the run directories listed in analysis/README.md:
   HIFITAXA_DATA=/path/to/run_dirs Rscript <script>.R", BR))
 if (REPO == "") stop(
-  "HIFITAXA_REPO is not set and this script is not running from benchmark/analysis/ of a HiFiTaxa checkout.
-Set HIFITAXA_REPO to a HiFiTaxa clone (https://github.com/alegarritano/HiFiTaxa); it provides the
+  "HIFITAXA_REPO is not set and this script is not running from analysis/ of a HiFiTaxa_analysis checkout.
+Set HIFITAXA_REPO to a clone of https://github.com/alegarritano/HiFiTaxa_analysis; it provides the
 fungal mock truth list benchmark/mock_exclude/fungi_103_species.txt.")
 
 # every script ggsave()s into OUT/figures and write.csv()s into OUT/tables
@@ -192,7 +193,7 @@ ATCC_TRUTH <- c("Acinetobacter baumannii"=0.0018,"Bacillus pacificus"=0.0180,"Ph
 .fung_truth <- file.path(REPO,"benchmark/mock_exclude/fungi_103_species.txt")
 if (!file.exists(.fung_truth)) stop(sprintf(
   "Mock truth list not found at '%s'.
-Set HIFITAXA_REPO to a HiFiTaxa checkout (git clone https://github.com/alegarritano/HiFiTaxa).
+Set HIFITAXA_REPO to a HiFiTaxa_analysis checkout (git clone https://github.com/alegarritano/HiFiTaxa_analysis).
 The list is read whenever 00_common.R is sourced, so it is required even by the holdout scripts.", .fung_truth))
 .fr <- readLines(.fung_truth); .fr<-str_trim(.fr)
 .fr <- .fr[.fr!="" & !str_starts(.fr,"#")]
