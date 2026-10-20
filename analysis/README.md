@@ -77,7 +77,6 @@ outputs go to `HIFITAXA_OUT/tables/` and `HIFITAXA_OUT/figures/`; the versions b
 | `15_holdout_16s_genus_weighted.R` | `holdout_16s_genus_weighted.csv`, `holdout_16s_genus_weighted_ecoli.csv` | | not in the manuscript (a table of an earlier draft) |
 | `16_holdout_identity_bins.R` | `holdout_accuracy_by_identity.csv` | | Supplementary Table S9 |
 | `17_mock_per_library.R` | `atcc_composition_genus_per_library.csv` (needs `atcc_composition_genus.csv` from 04) | | Supplementary Table S12 |
-| `18_figure1_pipeline.R` | | `fig1_pipeline` (schematic of the pipeline, no data input; drawn at 180 mm) | Figure 1 |
 
 Supplementary tables and figures were renumbered by first mention on 20 October 2026 (old S10, S11, S4, S5, S6, S12, S8, S9, S13, S7 became S4 to S13 in that order; old Supplementary Figs. S4, S5, S6, S1, S2, S3 became S1 to S6); the numbers above are the new ones. Figures are in `manuscript/figures/` under their new numbers.
 
